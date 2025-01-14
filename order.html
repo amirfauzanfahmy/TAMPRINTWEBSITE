@@ -7,199 +7,245 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
-      /* Body styling */
-      * {
-              margin: 0;
-              padding: 0;
-              box-sizing: border-box;
-          }
-  
-          body {
-              font-family: Arial, sans-serif;
-              background-image: url('backgroundtamprint.jpg');
-              background-attachment: fixed;
-              background-size: cover;
-              background-repeat: no-repeat;
-              color: #000000;
-              display: flex;
-              flex-direction: column;
-              min-height: 100vh;
-          }
-  
-          header {
-              background-color: rgba(76, 175, 79, 0.8);
-              padding: 10px 20px;
-              display: flex;
-              justify-content: space-between;
-              align-items: center;
-              box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-          }
-  
-          .logo {
-              display: flex;
-              align-items: center;
-          }
-  
-          .logo img {
-              width: 30px; /* Adjust size as needed */
-              height: 30px;
-              margin-right: 10px;
-              border-radius: 15px;
-          }
-  
-          .logo h1 {
-              font-size: 24px;
-              color: #000000;
-          }
-  
-          .nav {
-              list-style: none;
-              display: flex;
-          }
-  
-          .nav li {
-              margin-left: 20px;
-          }
-  
-          .nav a {
-              text-decoration: none;
-              color: #000000;
-              font-size: 16px;
-              transition: color 0.3s ease;
-          }
-  
-          .nav a:hover {
-              color: #145d1c;
-          }
-  
-      /* Main container styling */
-      .container {
-        background-color: rgba(255, 255, 255, 0.9);
-        width: 40%;
-        padding: 40px 30px;
-        margin: 100px auto;
-        border-radius: 10px;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-      }
-  
-      h2 {
-        text-align: center;
-        color: #4CAF50;
-        margin-bottom: 20px;
-      }
-  
-      label {
-        font-size: 16px;
-        margin-bottom: 8px;
-        display: block;
-        color: #555;
-      }
-  
-      select, input[type="number"], input[type="file"], button {
-        width: 100%;
-        padding: 12px;
-        margin: 10px 0 20px;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-        box-sizing: border-box;
-        font-size: 16px;
-        outline: none;
-        transition: border-color 0.3s ease;
-      }
-  
-      select:focus, input[type="number"]:focus, input[type="file"]:focus {
-        border-color: #4CAF50;
-      }
-  
-      button {
-        background-color: #4CAF50;
-        color: white;
-        padding: 14px;
-        margin: 8px 0;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        width: 100%;
-        font-size: 16px;
-        transition: background-color 0.3s ease;
-      }
-  
-      button:hover {
-        background-color: #45a049;
-      }
-  
-      footer {
-              background-color: #4CAF50;
-              color: white;
-              text-align: center;
-              padding: 20px 10px;
-              margin-top: auto;
-          }
-  
-          footer .footer-links {
-              margin-bottom: 10px;
-          }
-  
-          footer .footer-links a {
-              text-decoration: none;
-              color: white;
-              margin: 0 10px;
-              font-size: 14px;
-              transition: color 0.3s ease;
-          }
-  
-          footer .footer-links a:hover {
-              color: #d4f1d7;
-          }
-  
-          footer .social-icons {
-              margin: 10px 0;
-          }
-  
-          footer .social-icons a {
-              margin: 0 10px;
-              color: white;
-              font-size: 24px;
-              transition: color 0.3s ease;
-          }
-  
-          footer .social-icons a:hover {
-              color: #d4f1d7;
-          }
-  
-          footer p {
-              font-size: 14px;
-              margin-top: 10px;
-          }
-  
-          @media (max-width: 480px) {
-              .info-item {
-                  width: 100%;
-              }
-  
-              footer .footer-links {
-                  display: flex;
-                  flex-direction: column;
-                  align-items: center;
-              }
-  
-              footer .footer-links a {
-                  margin-bottom: 5px;
-              }
-          }
-  
-      /* Responsive Design */
-      @media (max-width: 768px) {
-        .container {
-          width: 80%;
+        /* Body styling */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
-      }
-  
-      @media (max-width: 480px) {
-        .container {
-          width: 90%;
+
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('backgroundtamprint.jpg');
+            background-attachment: fixed;
+            background-size: cover;
+            background-repeat: no-repeat;
+            color: #000000;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
         }
-      }
+
+        header {
+            background-color: rgba(76, 175, 79, 0.9);
+            color: rgb(0, 0, 0);
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            width: 30px;
+            height: 30px;
+            margin-right: 10px;
+            border-radius: 15px;
+        }
+
+        .logo h1 {
+            font-size: 24px;
+            color: #000000;
+        }
+
+        .nav {
+            list-style: none;
+            display: flex;
+        }
+
+        .nav li {
+            margin-left: 20px;
+        }
+
+        .nav a {
+            text-decoration: none;
+            color: #050505;
+            font-size: 16px;
+            transition: color 0.3s ease;
+        }
+
+        .nav a:hover {
+            color: #d4f1d7;
+        }
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 24px;
+            color: #000;
+            cursor: pointer;
+        }
+
+        .menu-toggle .fas {
+            color: #fff;
+        }
+
+        @media (max-width: 768px) {
+            .nav {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                right: 20px;
+                background-color: rgba(76, 175, 79, 0.9);
+                border-radius: 5px;
+                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+                padding: 10px;
+            }
+
+            .nav.active {
+                display: flex;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .nav li {
+                margin: 10px 0;
+            }
+        }
+
+        /* Main container styling */
+        .container {
+            background-color: rgba(255, 255, 255, 0.9);
+            width: 40%;
+            padding: 40px 30px;
+            margin: 100px auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        h2 {
+            text-align: center;
+            color: #4CAF50;
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-size: 16px;
+            margin-bottom: 8px;
+            display: block;
+            color: #555;
+        }
+
+        select, input[type="number"], input[type="file"], button {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+            font-size: 16px;
+            outline: none;
+            transition: border-color 0.3s ease;
+        }
+
+        select:focus, input[type="number"]:focus, input[type="file"]:focus {
+            border-color: #4CAF50;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 14px;
+            margin: 8px 0;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        footer {
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            padding: 20px 10px;
+            margin-top: auto;
+        }
+
+        footer .footer-links {
+            margin-bottom: 10px;
+        }
+
+        footer .footer-links a {
+            text-decoration: none;
+            color: white;
+            margin: 0 10px;
+            font-size: 14px;
+            transition: color 0.3s ease;
+        }
+
+        footer .footer-links a:hover {
+            color: #d4f1d7;
+        }
+
+        footer .social-icons {
+            margin: 10px 0;
+        }
+
+        footer .social-icons a {
+            margin: 0 10px;
+            color: white;
+            font-size: 24px;
+            transition: color 0.3s ease;
+        }
+
+        footer .social-icons a:hover {
+            color: #d4f1d7;
+        }
+
+        footer p {
+            font-size: 14px;
+            margin-top: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                width: 80%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                width: 90%;
+            }
+
+            .nav {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .nav li {
+                margin: 10px 0;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .nav.active {
+                display: flex;
+            }
+        }
     </style>
 </head>
 <body>
@@ -211,15 +257,18 @@
             <h1>TAMPRINT</h1>
         </div>
         <nav>
-            <ul class="nav">
+            <ul class="nav" id="navbar">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="myorder.html">My order</a></li>
                 <li><a href="services.html">Services</a></li>
                 <li><a href="about.html">About Us</a></li>
                 <li><a href="contact.html">Contact</a></li>
             </ul>
+            <button class="menu-toggle" aria-label="Toggle Menu" aria-expanded="false" aria-controls="navbar">
+                <i class="fas fa-bars"></i>
+            </button>
         </nav>
- </header>
+    </header>
 
     <div class="container">
         <h2>Order Details</h2>
@@ -305,50 +354,56 @@
         });
 
         function saveOrder() {
-    const orders = JSON.parse(localStorage.getItem('orders')) || [];
-    const order = {
-        type: 'regular', // Indicate the type of order
-        service: document.getElementById('service').value,
-        pages: document.getElementById('pages').value || 'N/A',
-        format: document.getElementById('format').value || 'N/A',
-        upload: document.getElementById('upload').files[0] ? document.getElementById('upload').files[0].name : 'No file uploaded',
-        paymentMethod: document.getElementById('paymentMethod').value || 'N/A',
-        deliveryMethod: document.getElementById('deliveryMethod').value || 'N/A',
-        totalAmount: 0, // Initialize total amount
-        lamination: false, // Initialize lamination property
-        binding: false // Initialize binding property
-    };
+            const orders = JSON.parse(localStorage.getItem('orders')) || [];
+            const order = {
+                type: 'regular',
+                service: document.getElementById('service').value,
+                pages: document.getElementById('pages').value || 'N/A',
+                format: document.getElementById('format').value || 'N/A',
+                upload: document.getElementById('upload').files[0] ? document.getElementById('upload').files[0].name : 'No file uploaded',
+                paymentMethod: document.getElementById('paymentMethod').value || 'N/A',
+                deliveryMethod: document.getElementById('deliveryMethod').value || 'N/A',
+                totalAmount: 0,
+                lamination: false,
+                binding: false
+            };
 
-    // Set lamination and binding properties based on selected service
-    if (order.service === 'laminate') {
-        order.lamination = true;
-    } else if (order.service === 'binding') {
-        order.binding = true;
-    }
+            if (order.service === 'laminate') {
+                order.lamination = true;
+            } else if (order.service === 'binding') {
+                order.binding = true;
+            }
 
-    // Calculate total amount based on service type
-    let totalAmount = 0;
-    if (order.service === 'black_white' || order.service === 'color') {
-        const pagePrice = (order.service === 'color') ? 0.30 : 0.10;
-        const pagesCount = parseInt(order.pages); // Convert pages to an integer
-        if (!isNaN(pagesCount) && pagesCount > 0) { // Validate pages input
-            totalAmount += pagesCount * pagePrice;
+            let totalAmount = 0;
+            if (order.service === 'black_white' || order.service === 'color') {
+                const pagePrice = (order.service === 'color') ? 0.30 : 0.10;
+                const pagesCount = parseInt(order.pages);
+                if (!isNaN(pagesCount) && pagesCount > 0) {
+                    totalAmount += pagesCount * pagePrice;
+                }
+            }
+            if (order.lamination) {
+                totalAmount += 0.50;
+            }
+            if (order.binding) {
+                totalAmount += 2.00;
+            }
+            order.totalAmount = totalAmount;
+
+            orders.push(order);
+            localStorage.setItem('orders', JSON.stringify(orders));
+
+            alert('Order saved!');
+            window.location.href = 'myorder.html';
         }
-    }
-    if (order.lamination) {
-        totalAmount += 0.50; // Add lamination cost
-    }
-    if (order.binding) {
-        totalAmount += 2.00; // Add binding cost
-    }
-    order.totalAmount = totalAmount; // Store total amount in order
 
-    orders.push(order);
-    localStorage.setItem('orders', JSON.stringify(orders));
+        const menuToggle = document.querySelector('.menu-toggle');
+        const nav = document.querySelector('.nav');
 
-    alert('Order saved!');
-    window.location.href = 'myorder.html';  // Redirect to the orders page
-}
+        menuToggle.addEventListener('click', () => {
+            nav.classList.toggle('active');
+        });
+
     </script>
 </body>
 </html>
