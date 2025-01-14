@@ -256,6 +256,16 @@
                     </select>
                 </div>
 
+                <div class="form-group" id="bindingGroup" style="display: none;">
+                    <label for="bindingQuantity">Enter Quantity for Binding:</label>
+                    <input type="number" id="bindingQuantity" name="bindingQuantity" min="1" placeholder="Enter quantity for binding">
+                </div>
+
+                <div class="form-group" id="laminateGroup" style="display: none;">
+                    <label for="laminateQuantity">Enter Quantity for Lamination:</label>
+                    <input type="number" id="laminateQuantity" name="laminateQuantity" min="1" placeholder="Enter quantity for lamination">
+                </div>
+
                 <div class="form-group">
                     <label for="upload">Upload Your File:</label>
                     <input type="file" id="upload" name="upload" accept=".pdf,.docx,.jpg,.png" required>
@@ -297,21 +307,27 @@
         const serviceSelect = document.getElementById('service');
         const pagesGroup = document.getElementById('pagesGroup');
         const formatGroup = document.getElementById('formatGroup');
+        const bindingGroup = document.getElementById('bindingGroup');
+        const laminateGroup = document.getElementById('laminateGroup');
         const fileInput = document.getElementById('upload');
 
         serviceSelect.addEventListener('change', function () {
             const selectedService = serviceSelect.value;
             pagesGroup.style.display = selectedService === 'black_white' || selectedService === 'color' ? 'block' : 'none';
             formatGroup.style.display = selectedService === 'black_white' || selectedService === 'color' ? 'block' : 'none';
+            bindingGroup.style.display = selectedService === 'binding' ? 'block' : 'none';
+            laminateGroup.style.display = selectedService === 'laminate' ? 'block' : 'none';
         });
 
         function saveOrder() {
             const orders = JSON.parse(localStorage.getItem('orders')) || [];
             const order = {
-                type: 'regular', 
+                type: 'regular',
                 service: document.getElementById('service').value,
                 pages: document.getElementById('pages').value || 'N/A',
                 format: document.getElementById('format').value || 'N/A',
+                bindingQuantity: document.getElementById('bindingQuantity').value || 'N/A',
+                laminateQuantity: document.getElementById('laminateQuantity').value || 'N/A',
                 upload: document.getElementById('upload').files[0] ? document.getElementById('upload').files[0].name : 'No file uploaded',
                 paymentMethod: document.getElementById('paymentMethod').value || 'N/A',
                 deliveryMethod: document.getElementById('deliveryMethod').value || 'N/A',
