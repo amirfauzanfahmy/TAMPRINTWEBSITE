@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Print-On-Demand Order</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.10.377/pdf.min.js"></script>
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('backgroundtamprint.jpg');
+            background-attachment: fixed;
+            background-size: cover;
+            background-repeat: no-repeat;
+            color: #000000;
+            display: flex;
+            justify-content: space-between;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            background-color: rgba(76, 175, 79, 0.9);
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            gap: 30px; /* Adds space between logo and nav */
+        }
+
+        .logo {
+             display: flex;
+            align-items: center;
+            margin-right: 20px; /* Adds gap between logo and nav */
+        }
+
+        .logo img {
+            width: 30px;
+            height: 30px;
+            margin-right: 10px;
+            border-radius: 15px;
+        }
+
+        .logo h1 {
+            font-size: 24px;
+            color: #000000;
+        }
+
+        .nav {
+            list-style: none;
+            display: flex;
+            gap: 20px; /* Adds space between each navigation link */
+        }
+
+        .nav li {
+            margin-left: 20px;
+        }
+
+        .nav a {
+            text-decoration: none;
+            color: #000000;
+            font-size: 16px;
+            transition: color 0.3s ease;
+        }
+
+        .nav a:hover {
+            color: #ffffff;
+        }
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 24px;
+            color: #000;
+            cursor: pointer;
+        }
+
+        .menu-toggle .fas {
+            color: #fff;
+        }
+
+        @media (max-width: 768px) {
+            .nav {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                right: 20px;
+                background-color: rgba(76, 175, 79, 0.9);
+                border-radius: 5px;
+                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+                padding: 10px;
+            }
+
+            .nav.active {
+                display: flex;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .nav li {
+                margin: 10px 0;
+            }
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            margin-top: 100px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            width: 90%;
+            margin: 100px auto;
+        }
+
+        .order-section {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            width: 45%;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            border: 1px solid #4CAF50;
+            padding: 15px;
+            background-color: #f9f9f9;
+        }
+
+        select, input[type="file"], input[type="radio"], input[type="number"], button {
+            width: auto;
+            padding: 12px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: rgb(0, 0, 0);
+            cursor: pointer;
+            border: none;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .preview {
+            background-color: #eee;
+            padding: 20px;
+            text-align: center;
+            width: 100%;
+            height: auto;
+            max-height: 500px;
+            border: 2px dashed #4CAF50;
+            border-radius: 10px;
+            margin-top: 20px;
+            display: none;
+            overflow: auto;
+        }
+
+        .preview img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            margin-bottom: 10px;
+        }
+
+        .preview canvas {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 10px;
+        }
+
+        footer {
+            background-color: rgba(76, 175, 79, 0.9);
+            color: white;
+            padding: 20px;
+            text-align: center;
+            width: 100%;
+            margin-top: auto;
+        }
+
+        footer .footer-links {
+            margin-bottom: 10px;
+        }
+
+        footer .footer-links a {
+            text-decoration: none;
+            color: white;
+            margin: 0 10px;
+            font-size: 14px;
+            transition: color 0.3s ease;
+        }
+
+        footer .footer-links a:hover {
+            color: #d4f1d7;
+        }
+
+        footer .social-icons {
+            margin: 10px 0;
+        }
+
+        footer .social-icons a {
+            margin: 0 10px;
+            color: white;
+            font-size: 24px;
+            transition: color 0.3s ease;
+        }
+
+        footer .social-icons a:hover {
+            color: #d4f1d7;
+        }
+
+        footer p {
+            font-size: 14px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <a href="profile.html">
+                <img src="gambaruser.png" alt="Profile Logo">
+            </a>
+            <h1>TAMPRINT</h1>
+        </div>
+        <nav class="nav">
+            <a href="index.html">Home</a>
+            <a href="myorder.html">My Order</a>
+            <a href="services.html">Services</a>
+            <a href="about.html">About Us</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+        <button class="menu-toggle" aria-label="Toggle Menu">
+            <i class="fas fa-bars"></i>
+        </button>
+    </header>
+
+    <div class="container">
+        <!-- Design Upload Section -->
+        <div class="order-section">
+            <h2>Select Design</h2><br>
+            <p>Upload your design to proceed with the order.</p>
+            <label for="designChoice">Design Type:</label>
+            <select id="designChoice" onchange="resetPreview()">
+                <option value="own">Own Design</option>
+            </select>
+            <br>
+
+            <div id="uploadSection">
+                <label for="designUpload">Upload Your Design:</label>
+                <input type="file" id="designUpload" accept="image/*,application/pdf">
+            </div>
+        </div>
+        <br>
+
+        <!-- Product Options Section -->
+        <div class="order-section">
+            <h2>Select Product Options</h2>
+            <label for="paperSize">Paper Size:</label>
+            <select id="paperSize">
+                <option value="">-- Select a Paper Size --</option>
+                <option value="A4">A4</option>
+                <option value="A3">A3</option>
+                <option value="Letter">Letter</option>
+            </select>
+            <br>
+
+            <label for="paperMaterial">Material:</label>
+            <select id="paperMaterial">
+                <option value="">-- Select a Paper Material --</option>
+                <option value="matte paper">Matte paper</option>
+                <option value="glossy paper">Glossy paper</option>
+                <option value="photo paper">Photo paper</option>
+                <option value="recycling paper">Recycling paper</option>
+            </select>
+            <br>
+
+            <label for="paperColor">Paper Color:</label>
+            <select id="paperColor">
+                <option value="">-- Select a Paper Colour --</option>
+                <option value="white">White</option>
+                <option value="cream">Cream</option>
+            </select>
+            <br>
+
+            <label for="quantity">Quantity:</label>
+            <input type="number" id="quantity" value="1" min="1">
+            <br>
+
+            <label for="paymentMethod">Payment Method:</label>
+            <select id="paymentMethod">
+                <option value="">-- Select a Payment Method --</option>
+                <option value="cash">Cash</option>
+                <option value="bank_transfer">Bank Transfer</option>
+            </select>
+            <br>
+
+            <label for="deliveryMethod">Delivery Method:</label>
+            <select id="deliveryMethod">
+                <option value="">-- Select a Delivery Method --</option>
+                <option value="pickup">Pickup</option>
+                <option value="delivery">Delivery</option>
+            </select>
+
+            <br>
+            <button type="button" onclick="saveOrder()">Proceed to Order</button>
+
+            <button type="button" onclick="showPreview()">Preview</button>
+        </div>
+
+        <!-- Preview Section -->
+        <div class="preview" id="previewSection">
+            <h3>Preview</h3>
+            <div id="realTimePreview">
+                <p>Select your design and product options to see a preview here.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer Section -->
+    <footer>
+        <div class="social-icons">
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+        </div>
+        <p>&copy; 2025 TAMPRINT. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        // Hamburger Menu Functionality
+        const menuToggle = document.querySelector('.menu-toggle');
+        const nav = document.querySelector('.nav');
+
+        menuToggle.addEventListener('click', () => {
+            nav.classList.toggle('active');
+        });
+
+        function resetPreview() {
+            document.getElementById("previewSection").style.display = "none";
+        }
+
+        function showPreview() {
+            var designFile = document.getElementById("designUpload").files[0];
+            var previewContainer = document.getElementById("realTimePreview");
+            previewContainer.innerHTML = "";
+
+            if (designFile) {
+                var reader = new FileReader();
+                reader.onload = function(e) {
+                    var fileType = designFile.type;
+
+                    if (fileType === "application/pdf") {
+                        displayPdfPreview(e.target.result);
+                    } else {
+                        var img = document.createElement("img");
+                        img.src = e.target.result;
+                        previewContainer.appendChild(img);
+                    }
+                };
+                reader.readAsDataURL(designFile);
+            }
+
+            document.getElementById("previewSection").style.display = "block";
+        }
+
+        function displayPdfPreview(pdfData) {
+            const loadingTask = pdfjsLib.getDocument(pdfData);
+            loadingTask.promise.then(function(pdf) {
+                const previewContainer = document.getElementById("realTimePreview");
+
+                for (let pageNum = 1; pageNum <= pdf.numPages; pageNum++) {
+                    pdf.getPage(pageNum).then(function(page) {
+                        const scale = 1.5;
+                        const viewport = page.getViewport({ scale: scale });
+
+                        const canvas = document.createElement("canvas");
+                        canvas.height = viewport.height;
+                        canvas.width = viewport.width;
+
+                        previewContainer.appendChild(canvas);
+
+                        const renderContext = {
+                            canvasContext: canvas.getContext("2d"),
+                            viewport: viewport
+                        };
+                        page.render(renderContext);
+                    });
+                }
+            }, function(error) {
+                console.error("Error rendering PDF: ", error);
+            });
+        }
+
+        function saveOrder() {
+            const orders = JSON.parse(localStorage.getItem("orders")) || [];
+            const order = {
+                type: 'print-on-demand',
+                designUpload: document.getElementById("designUpload").files[0]?.name || "N/A",
+                paperSize: document.getElementById("paperSize").value,
+                paperMaterial: document.getElementById("paperMaterial").value,
+                quantity: document.getElementById("quantity").value,
+                deliveryMethod: document.getElementById("deliveryMethod").value,
+                paymentMethod: document.getElementById("paymentMethod").value,
+            };
+            orders.push(order);
+            localStorage.setItem("orders", JSON.stringify(orders));
+            alert("Order saved successfully!");
+            window.location.href = "myorder.html";
+        }
+
+        window.onload = function() {
+            resetPreview();
+        };
+    </script>
+</body>
+</html>
