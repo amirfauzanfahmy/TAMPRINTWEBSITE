@@ -7,200 +7,199 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
-        /* General Reset */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: Arial, sans-serif;
-            background-image: url('backgroundtamprint.jpg');
-            background-attachment: fixed;
-            background-size: cover;
-            background-repeat: no-repeat;
-            color: #000000;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-        }
-
-        header {
-            background-color: rgba(76, 175, 79, 0.9);
-            padding: 10px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            z-index: 1000;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-        }
-
-        .logo img {
-            width: 30px;
-            height: 30px;
-            margin-right: 10px;
-            border-radius: 15px;
-        }
-
-        .logo h1 {
-            font-size: 24px;
-            color: #000000;
-        }
-
-        .nav {
-            list-style: none;
-            display: flex;
-        }
-
-        .nav li {
-            margin-left: 20px;
-        }
-
-        .nav a {
-            text-decoration: none;
-            color: #000000;
-            font-size: 16px;
-            transition: color 0.3s ease;
-        }
-
-        .nav a:hover {
-            color: #ffffff;
-        }
-
-        .menu-toggle {
-            display: none;
-            background: none;
-            border: none;
-            font-size: 24px;
-            color: #000;
-            cursor: pointer;
-        }
-
-        .menu-toggle .fas {
-            color: #fff;
-        }
-
-        @media (max-width: 768px) {
-            .nav {
-                display: none;
-                flex-direction: column;
-                position: absolute;
-                top: 100%;
-                right: 20px;
-                background-color: rgba(76, 175, 79, 0.9);
-                border-radius: 5px;
-                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-                padding: 10px;
-            }
-
-            .nav.active {
-                display: flex;
-            }
-
-            .menu-toggle {
-                display: block;
-            }
-
-            .nav li {
-                margin: 10px 0;
-            }
-        }
-
+      /* Body styling */
+      * {
+              margin: 0;
+              padding: 0;
+              box-sizing: border-box;
+          }
+  
+          body {
+              font-family: Arial, sans-serif;
+              background-image: url('backgroundtamprint.jpg');
+              background-attachment: fixed;
+              background-size: cover;
+              background-repeat: no-repeat;
+              color: #000000;
+              display: flex;
+              flex-direction: column;
+              min-height: 100vh;
+          }
+  
+          header {
+              background-color: rgba(76, 175, 79, 0.8);
+              padding: 10px 20px;
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+              box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+          }
+  
+          .logo {
+              display: flex;
+              align-items: center;
+          }
+  
+          .logo img {
+              width: 30px; /* Adjust size as needed */
+              height: 30px;
+              margin-right: 10px;
+              border-radius: 15px;
+          }
+  
+          .logo h1 {
+              font-size: 24px;
+              color: #000000;
+          }
+  
+          .nav {
+              list-style: none;
+              display: flex;
+          }
+  
+          .nav li {
+              margin-left: 20px;
+          }
+  
+          .nav a {
+              text-decoration: none;
+              color: #000000;
+              font-size: 16px;
+              transition: color 0.3s ease;
+          }
+  
+          .nav a:hover {
+              color: #145d1c;
+          }
+  
+      /* Main container styling */
+      .container {
+        background-color: rgba(255, 255, 255, 0.9);
+        width: 40%;
+        padding: 40px 30px;
+        margin: 100px auto;
+        border-radius: 10px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      }
+  
+      h2 {
+        text-align: center;
+        color: #4CAF50;
+        margin-bottom: 20px;
+      }
+  
+      label {
+        font-size: 16px;
+        margin-bottom: 8px;
+        display: block;
+        color: #555;
+      }
+  
+      select, input[type="number"], input[type="file"], button {
+        width: 100%;
+        padding: 12px;
+        margin: 10px 0 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-sizing: border-box;
+        font-size: 16px;
+        outline: none;
+        transition: border-color 0.3s ease;
+      }
+  
+      select:focus, input[type="number"]:focus, input[type="file"]:focus {
+        border-color: #4CAF50;
+      }
+  
+      button {
+        background-color: #4CAF50;
+        color: white;
+        padding: 14px;
+        margin: 8px 0;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        width: 100%;
+        font-size: 16px;
+        transition: background-color 0.3s ease;
+      }
+  
+      button:hover {
+        background-color: #45a049;
+      }
+  
+      footer {
+              background-color: #4CAF50;
+              color: white;
+              text-align: center;
+              padding: 20px 10px;
+              margin-top: auto;
+          }
+  
+          footer .footer-links {
+              margin-bottom: 10px;
+          }
+  
+          footer .footer-links a {
+              text-decoration: none;
+              color: white;
+              margin: 0 10px;
+              font-size: 14px;
+              transition: color 0.3s ease;
+          }
+  
+          footer .footer-links a:hover {
+              color: #d4f1d7;
+          }
+  
+          footer .social-icons {
+              margin: 10px 0;
+          }
+  
+          footer .social-icons a {
+              margin: 0 10px;
+              color: white;
+              font-size: 24px;
+              transition: color 0.3s ease;
+          }
+  
+          footer .social-icons a:hover {
+              color: #d4f1d7;
+          }
+  
+          footer p {
+              font-size: 14px;
+              margin-top: 10px;
+          }
+  
+          @media (max-width: 480px) {
+              .info-item {
+                  width: 100%;
+              }
+  
+              footer .footer-links {
+                  display: flex;
+                  flex-direction: column;
+                  align-items: center;
+              }
+  
+              footer .footer-links a {
+                  margin-bottom: 5px;
+              }
+          }
+  
+      /* Responsive Design */
+      @media (max-width: 768px) {
         .container {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            padding: 100px 20px 50px;
-            max-width: 1200px;
-            margin: 0 auto;
+          width: 80%;
         }
-
-        .order-box {
-            background-color: rgba(255, 255, 255, 0.8);
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            padding: 20px;
-            margin-bottom: 30px;
-            text-align: left;
+      }
+  
+      @media (max-width: 480px) {
+        .container {
+          width: 90%;
         }
-
-        .order-box h3 {
-            color: #4CAF50;
-            margin-bottom: 10px;
-        }
-
-        .order-box .form-group {
-            margin-bottom: 15px;
-        }
-
-        .order-box label {
-            font-size: 16px;
-            color: #333;
-        }
-
-        .order-box input, .order-box select {
-            width: 100%;
-            padding: 10px;
-            font-size: 16px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            margin-top: 5px;
-        }
-
-        .order-box button {
-            background-color: #4CAF50;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 16px;
-            margin-top: 20px;
-            transition: background-color 0.3s ease;
-        }
-
-        .order-box button:hover {
-            background-color: #2c642f;
-        }
-
-        footer {
-            background-color: #4CAF50;
-            color: white;
-            text-align: center;
-            padding: 20px 10px;
-            margin-top: auto;
-        }
-
-        footer .social-icons {
-            margin: 10px 0;
-        }
-
-        footer .social-icons a {
-            margin: 0 10px;
-            color: white;
-            font-size: 24px;
-            transition: color 0.3s ease;
-        }
-
-        footer .social-icons a:hover {
-            color: #d4f1d7;
-        }
-
-        footer p {
-            font-size: 14px;
-            margin-top: 10px;
-        }
-
+      }
     </style>
 </head>
 <body>
@@ -219,86 +218,76 @@
                 <li><a href="about.html">About Us</a></li>
                 <li><a href="contact.html">Contact</a></li>
             </ul>
-            <button class="menu-toggle" aria-label="Toggle Menu">
-                <i class="fas fa-bars"></i>
-            </button>
         </nav>
-    </header>
+ </header>
 
     <div class="container">
-        <div class="order-box">
-            <h1><strong>Order</strong></h1>
-            <br>
-            <form id="orderForm">
-                <div class="form-group">
-                    <label for="service">Select Service:</label>
-                    <select id="service" name="service" required>
-                        <option value="">-- Select a Service --</option>
-                        <option value="black_white">Print Black & White</option>
-                        <option value="color">Print in Color</option>
-                        <option value="binding">Binding</option>
-                        <option value="laminate">Laminate</option>
-                    </select>
-                </div>
+        <h2>Order Details</h2>
+        <form id="orderForm">
+            <div class="form-group">
+                <label for="service">Select Service:</label>
+                <select id="service" name="service" required>
+                    <option value="">-- Select a Service --</option>
+                    <option value="black_white">Print Black & White</option>
+                    <option value="color">Print in Color</option>
+                    <option value="binding">Binding</option>
+                    <option value="laminate">Laminate</option>
+                </select>
+            </div>
 
-                <div class="form-group" id="pagesGroup" style="display: none;">
-                    <label for="pages">Number of Pages:</label>
-                    <input type="number" id="pages" name="pages" min="1" placeholder="Enter the number of pages">
-                </div>
+            <div class="form-group" id="pagesGroup" style="display: none;">
+                <label for="pages">Number of Pages:</label>
+                <input type="number" id="pages" name="pages" min="1" placeholder="Enter the number of pages">
+            </div>
 
-                <div class="form-group" id="formatGroup" style="display: none;">
-                    <label for="format">Select Paper Format:</label>
-                    <select id="format" name="format" required>
-                        <option value="">-- Select a Format --</option>
-                        <option value="A4">A4</option>
-                        <option value="A3">A3</option>
-                        <option value="Letter">Letter</option>
-                    </select>
-                </div>
+            <div class="form-group" id="formatGroup" style="display: none;">
+                <label for="format">Select Paper Format:</label>
+                <select id="format" name="format" required>
+                    <option value="">-- Select a Format --</option>
+                    <option value="A4">A4</option>
+                    <option value="A3">A3</option>
+                    <option value="Letter">Letter</option>
+                </select>
+            </div>
 
-                <div class="form-group" id="bindingGroup" style="display: none;">
-                    <label for="bindingQuantity">Enter Quantity for Binding:</label>
-                    <input type="number" id="bindingQuantity" name="bindingQuantity" min="1" placeholder="Enter quantity for binding">
-                </div>
+            <div class="form-group">
+                <label for="upload">Upload Your File:</label>
+                <input type="file" id="upload" name="upload" accept=".pdf,.docx,.jpg,.png" required>
+            </div>
 
-                <div class="form-group" id="laminateGroup" style="display: none;">
-                    <label for="laminateQuantity">Enter Quantity for Lamination:</label>
-                    <input type="number" id="laminateQuantity" name="laminateQuantity" min="1" placeholder="Enter quantity for lamination">
-                </div>
+            <div class="form-group">
+                <label for="paymentMethod">Select Payment Method:</label>
+                <select id="paymentMethod" name="paymentMethod" required>
+                    <option value="">-- Select Payment Method --</option>
+                    <option value="cash">Cash</option>
+                    <option value="bank_transfer">Bank Transfer</option>
+                </select>
+            </div>
 
-                <div class="form-group">
-                    <label for="upload">Upload Your File:</label>
-                    <input type="file" id="upload" name="upload" accept=".pdf,.docx,.jpg,.png" required>
-                </div>
+            <div class="form-group">
+                <label for="deliveryMethod">Select Delivery Method:</label>
+                <select id="deliveryMethod" name="deliveryMethod" required>
+                    <option value="">-- Select Delivery Method --</option>
+                    <option value="delivery">Delivery</option>
+                    <option value="pickup">Pickup</option>
+                </select>
+            </div>
 
-                <div class="form-group">
-                    <label for="paymentMethod">Select Payment Method:</label>
-                    <select id="paymentMethod" name="paymentMethod" required>
-                        <option value="">-- Select Payment Method --</option>
-                        <option value="cash">Cash</option>
-                        <option value="bank_transfer">Bank Transfer</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label for="deliveryMethod">Select Delivery Method:</label>
-                    <select id="deliveryMethod" name="deliveryMethod" required>
-                        <option value="">-- Select Delivery Method --</option>
-                        <option value="delivery">Delivery</option>
-                        <option value="pickup">Pickup</option>
-                    </select>
-                </div>
-
-                <button type="button" onclick="saveOrder()">Submit Order</button>
-            </form>
-        </div>
+            <button type="button" onclick="saveOrder()">Submit Order</button>
+        </form>
     </div>
 
     <footer>
         <div class="social-icons">
-            <a href="https://www.facebook.com/" aria-label="Facebook" target="_blank"><i class="fab fa-facebook"></i></a>
-            <a href="https://www.twitter.com/" aria-label="Twitter" target="_blank"><i class="fab fa-twitter"></i></a>
-            <a href="https://www.instagram.com/" aria-label="Instagram" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.facebook.com/" aria-label="Facebook" target="_blank">
+                <i class="fab fa-facebook"></i>
+            </a>
+            <a href="https://www.twitter.com/" aria-label="Twitter" target="_blank">
+                <i class="fab fa-twitter"></i>
+            </a>
+            <a href="https://www.instagram.com/" aria-label="Instagram" target="_blank">
+                <i class="fab fa-instagram"></i>
+            </a>
         </div>
         <p>&copy; 2025 TAMPRINT. All rights reserved.</p>
     </footer>
@@ -307,45 +296,59 @@
         const serviceSelect = document.getElementById('service');
         const pagesGroup = document.getElementById('pagesGroup');
         const formatGroup = document.getElementById('formatGroup');
-        const bindingGroup = document.getElementById('bindingGroup');
-        const laminateGroup = document.getElementById('laminateGroup');
         const fileInput = document.getElementById('upload');
 
         serviceSelect.addEventListener('change', function () {
             const selectedService = serviceSelect.value;
-            pagesGroup.style.display = selectedService === 'black_white' || selectedService === 'color' ? 'block' : 'none';
-            formatGroup.style.display = selectedService === 'black_white' || selectedService === 'color' ? 'block' : 'none';
-            bindingGroup.style.display = selectedService === 'binding' ? 'block' : 'none';
-            laminateGroup.style.display = selectedService === 'laminate' ? 'block' : 'none';
+            pagesGroup.style.display = selectedService === 'black_white' || selectedService === 'color' || selectedService === 'laminate' || selectedService === 'binding' ? 'block' : 'none';
+            formatGroup.style.display = selectedService === 'black_white' || selectedService === 'color' || selectedService === 'laminate' ? 'block' : 'none';
         });
 
         function saveOrder() {
-            const orders = JSON.parse(localStorage.getItem('orders')) || [];
-            const order = {
-                type: 'regular',
-                service: document.getElementById('service').value,
-                pages: document.getElementById('pages').value || 'N/A',
-                format: document.getElementById('format').value || 'N/A',
-                bindingQuantity: document.getElementById('bindingQuantity').value || 'N/A',
-                laminateQuantity: document.getElementById('laminateQuantity').value || 'N/A',
-                upload: document.getElementById('upload').files[0] ? document.getElementById('upload').files[0].name : 'No file uploaded',
-                paymentMethod: document.getElementById('paymentMethod').value || 'N/A',
-                deliveryMethod: document.getElementById('deliveryMethod').value || 'N/A',
-            };
+    const orders = JSON.parse(localStorage.getItem('orders')) || [];
+    const order = {
+        type: 'regular', // Indicate the type of order
+        service: document.getElementById('service').value,
+        pages: document.getElementById('pages').value || 'N/A',
+        format: document.getElementById('format').value || 'N/A',
+        upload: document.getElementById('upload').files[0] ? document.getElementById('upload').files[0].name : 'No file uploaded',
+        paymentMethod: document.getElementById('paymentMethod').value || 'N/A',
+        deliveryMethod: document.getElementById('deliveryMethod').value || 'N/A',
+        totalAmount: 0, // Initialize total amount
+        lamination: false, // Initialize lamination property
+        binding: false // Initialize binding property
+    };
 
-            orders.push(order);
-            localStorage.setItem('orders', JSON.stringify(orders));
+    // Set lamination and binding properties based on selected service
+    if (order.service === 'laminate') {
+        order.lamination = true;
+    } else if (order.service === 'binding') {
+        order.binding = true;
+    }
 
-            alert('Order saved!');
-            window.location.href = 'myorder.html';  // Redirect to the orders page
+    // Calculate total amount based on service type
+    let totalAmount = 0;
+    if (order.service === 'black_white' || order.service === 'color') {
+        const pagePrice = (order.service === 'color') ? 0.30 : 0.10;
+        const pagesCount = parseInt(order.pages); // Convert pages to an integer
+        if (!isNaN(pagesCount) && pagesCount > 0) { // Validate pages input
+            totalAmount += pagesCount * pagePrice;
         }
+    }
+    if (order.lamination) {
+        totalAmount += 0.50; // Add lamination cost
+    }
+    if (order.binding) {
+        totalAmount += 2.00; // Add binding cost
+    }
+    order.totalAmount = totalAmount; // Store total amount in order
 
-        const menuToggle = document.querySelector('.menu-toggle');
-        const nav = document.querySelector('.nav');
+    orders.push(order);
+    localStorage.setItem('orders', JSON.stringify(orders));
 
-        menuToggle.addEventListener('click', () => {
-            nav.classList.toggle('active');
-        });
+    alert('Order saved!');
+    window.location.href = 'myorder.html';  // Redirect to the orders page
+}
     </script>
 </body>
 </html>
